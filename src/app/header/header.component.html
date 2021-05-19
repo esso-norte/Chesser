@@ -1,0 +1,57 @@
+<header>
+    <!--Navbar-->
+    <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark purple darken-4 justify-content-between">
+
+        <!-- Navbar brand -->
+        <mdb-navbar-brand>
+            <a class="navbar-brand" href="#">Chesser.com</a>
+        </mdb-navbar-brand>
+
+        <!-- Collapsible content -->
+        <links>
+
+            <!-- Links -->
+            <ul *ngIf="isLoggedIn" class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="/players" class="nav-link waves-light" mdbWavesEffect>Users</a>
+                </li>
+
+                <!-- Dropdown -->
+<!--                <li class="nav-item dropdown" dropdown>-->
+<!--                    <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>-->
+<!--                        Basic dropdown<span class="caret"></span></a>-->
+<!--                    <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">-->
+<!--                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>-->
+<!--                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>-->
+<!--                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>-->
+<!--                        <div class="divider dropdown-divider"></div>-->
+<!--                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+
+            </ul>
+            <!-- Links -->
+
+            <!-- Auth form -->
+            <div *ngIf="isLoggedIn" class="btn-group justify-content-right" mdbDropdown>
+                <button type="button" mdbBtn color="white" class="waves-light btn-auth" mdbWavesEffect>
+                    {{username}}
+                </button>
+                <button type="button" mdbDropdownToggle mdbBtn color="white" class="dropdown-toggle dropdown-toggle-split px-3 waves-light btn-auth"
+                        mdbWavesEffect></button>
+
+                <div class="dropdown-menu dropdown-primary">
+                    <a routerLink="/profile"><button ngbDropdownItem>Profile</button></a>
+                    <button (click)="logout()" ngbDropdownItem>Logout</button>
+                </div>
+            </div>
+            <div *ngIf="!isLoggedIn" class="btn-group justify-content-right">
+                <a routerLink="/sign-up" class="float-right mr-2"><button mdbBtn type="button" color="white" mdbWavesEffect>Register</button></a>
+                <a routerLink="/login" class="float-right mr-2"><button mdbBtn type="button" color="white" mdbWavesEffect>Login</button></a>
+            </div>
+        </links>
+        <!-- Collapsible content -->
+
+    </mdb-navbar>
+    <!--/.Navbar-->
+</header>

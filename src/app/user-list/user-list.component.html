@@ -1,0 +1,29 @@
+<div class="user-list">
+    <div class="row justify-content-center">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <mdb-card>
+                <mdb-card-header>
+                    <h4>Players</h4>
+                </mdb-card-header>
+                <mdb-card-body>
+                    <ul class="list-group">
+                        <ng-container *ngFor="let user of users">
+                            <li *ngIf="user.username !== username" class="list-group-item">
+                                {{user.username}} <button *ngIf="!user.challenged" mdbBtn
+                                                          type="button"
+                                                          color="yellow"
+                                                          class="waves-light btn-sm"
+                                                          mdbWavesEffect
+                                                          (click)="challenge(user)">
+                                    Challenge
+                                </button>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </mdb-card-body>
+            </mdb-card>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="register-section">
+    <div class="row justify-content-center">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form [formGroup]="signupForm" (ngSubmit)="signup()" class="text-center border border-light p-5">
+
+                <p class="h4 mb-4">Login</p>
+
+                <!-- Email -->
+                <input autofocus type="email"
+                       id="email_address"
+                       class="form-control mb-4"
+                       placeholder="Email"
+                       [formControlName]="'email'"
+                       name="email-address"
+                       required>
+                <span *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">
+                    Please provide a valid email
+                </span>
+
+                <!-- Username -->
+                <input autofocus type="text"
+                       id="user_name"
+                       class="form-control mb-4"
+                       placeholder="Username"
+                       [formControlName]="'username'"
+                       name="user_name"
+                       required>
+                <span *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched">
+                    Please provide a valid username
+                </span>
+
+                <!-- Password -->
+                <input type="password"
+                       id="defaultLoginFormPassword"
+                       class="form-control mb-4"
+                       placeholder="Password"
+                       [formControlName]="'password'"
+                       required>
+                <span *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">
+                    Please provide a valid Password
+                </span>
+
+                <!-- Sign in button -->
+                <button mdbBtn color="info" block="true" class="my-4 green darken-4" type="submit">Register</button>
+
+                <!-- Register -->
+                <p>Already registered?
+                    <a href="/login"> <button mdbBtn color="info" class="my-4 blue darken-4" type="button">Login</button></a>
+                </p>
+
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

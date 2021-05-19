@@ -1,0 +1,61 @@
+.game-section{
+    margin: 70px;
+}
+
+.card-body {
+    text-align: center;
+}
+
+
+table {
+    margin: auto;
+    table-layout: fixed;
+    width: auto;
+}
+
+.table-borderless td, .table-borderless th {
+    border: none;
+}
+
+th, td {
+    width: 70px !important;
+    height: 70px !important;
+    text-align: center;
+}
+
+.square {
+    padding: 0;
+}
+
+.square-dark {
+    background-color: #623a1c;
+}
+
+.square-light {
+    background-color: #e8a361;
+}
+
+.square-selected{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(190,177,0,0.58);
+}
+
+.piece {
+    stroke: black;
+    stroke-width: 20px;
+}
+
+.control-panel {
+    height: 100%;
+}
+
+.control-buttons {
+    position: absolute;
+    bottom: 0;
+}
+
+.btn-move {
+    width: 90px;
+    text-transform: unset !important;
+}
