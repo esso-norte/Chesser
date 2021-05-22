@@ -8,12 +8,12 @@
                         <div class="d-flex align-items-center justify-content-center row">
                             <div class="col-6 text-right border-right">
                                 <h3 class="text-white">
-                                    <fa-icon [icon]="faCircle" size="1x"></fa-icon>
                                     {{game.whitePlayer.username}}
+                                    <fa-icon [icon]="faCircle" size="1x"></fa-icon>
                                 </h3>
                                 <h3 class="text-dark">
-                                    <fa-icon [icon]="faCircle" size="1x"></fa-icon>
                                     {{game.blackPlayer.username}}
+                                    <fa-icon [icon]="faCircle" size="1x"></fa-icon>
                                 </h3>
                             </div>
                             <div class="col-6 text-left">
@@ -26,7 +26,7 @@
                                         {{game.finished ?
                                             (game.result === '1/2-1/2' ? 'DRAW' :
                                                 ((game.result === '1-0' && game.whitePlayer.username === username) ||
-                                                (game.result === '0-1' && game.blackPlayer.username === username) ? 'WON' : 'LOST')) :
+                                                (game.result === '0-1' && game.blackPlayer.username === username) ? 'WIN' : 'DEFEAT')) :
                                             'ONGOING...'}}
                                     </span>
                                 </h3>
