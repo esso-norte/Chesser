@@ -1,0 +1,14 @@
+.challenge-record {
+    height: 100px;
+}
+
+.btn-ctrl {
+    height: 99px;
+    width: 99px;
+    border: 0 !important;
+    padding: 0;
+}
+
+.ctrl-btn-group {
+    width: 200px;
+}

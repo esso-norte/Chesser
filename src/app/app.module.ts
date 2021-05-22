@@ -20,7 +20,11 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { ProfilePageComponent } from './profile/profile-page.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { RatingHistoryComponent } from './profile-page/rating-history/rating-history.component';
+import { StatsComponent } from './profile-page/stats/stats.component';
+import { GamesListComponent } from './profile-page/games-list/games-list.component';
+import { ChallengesListComponent } from './profile-page/challenges-list/challenges-list.component';
 
 @NgModule({
     declarations: [
@@ -32,7 +36,11 @@ import { ProfilePageComponent } from './profile/profile-page.component';
         UserProfileComponent,
         GameComponent,
         UserListComponent,
-        ProfilePageComponent
+        ProfilePageComponent,
+        RatingHistoryComponent,
+        StatsComponent,
+        GamesListComponent,
+        ChallengesListComponent,
     ],
     imports: [
         AppRoutingModule,

@@ -1,0 +1,40 @@
+<mdb-card>
+    <mdb-card-header class="purple darken-3 text-white"><h5>Games</h5></mdb-card-header>
+    <mdb-card-body class="text-dark p-0">
+        <ul class="list-group p-0">
+            <li *ngFor="let game of games" class="list-group-item game-record align-items-center p-0">
+                <a href="/game/{{game.id}}">
+                    <button mdbBtn class="game-record flex-fill stylish-color">
+                        <div class="d-flex align-items-center justify-content-center row">
+                            <div class="col-6 text-right border-right">
+                                <h3 class="text-white">
+                                    <fa-icon [icon]="faCircle" size="1x"></fa-icon>
+                                    {{game.whitePlayer.username}}
+                                </h3>
+                                <h3 class="text-dark">
+                                    <fa-icon [icon]="faCircle" size="1x"></fa-icon>
+                                    {{game.blackPlayer.username}}
+                                </h3>
+                            </div>
+                            <div class="col-6 text-left">
+                                <h3>
+                                    <span class="badge {{game.finished ?
+                                            (game.result === '1/2-1/2' ? 'yellow darken-3 text-dark' :
+                                                ((game.result === '1-0' && game.whitePlayer.username === username) ||
+                                                (game.result === '0-1' && game.blackPlayer.username === username) ? 'green darken-3 text-dark' : 'red darken-4 text-dark')) :
+                                            'blue darken-4 text-white'}}">
+                                        {{game.finished ?
+                                            (game.result === '1/2-1/2' ? 'DRAW' :
+                                                ((game.result === '1-0' && game.whitePlayer.username === username) ||
+                                                (game.result === '0-1' && game.blackPlayer.username === username) ? 'WON' : 'LOST')) :
+                                            'ONGOING...'}}
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </mdb-card-body>
+</mdb-card>

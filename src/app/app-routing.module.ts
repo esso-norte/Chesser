@@ -4,7 +4,7 @@ import { SignupComponent } from "./auth/signup/signup.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { GameComponent } from "./game/view-game/game.component";
 import { UserListComponent } from "./user-list/user-list.component";
-import { ProfilePageComponent } from "./profile/profile-page.component";
+import { ProfilePageComponent } from "./profile-page/profile-page.component";
 
 const routes: Routes = [
     { path: '', redirectTo: '/profile', pathMatch: 'full' },

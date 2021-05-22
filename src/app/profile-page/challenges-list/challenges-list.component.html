@@ -1,0 +1,32 @@
+<mdb-card>
+    <mdb-card-header class="purple darken-3 text-white"><h5>Challenges</h5></mdb-card-header>
+    <mdb-card-body class="text-dark p-0">
+        <ul class="list-group p-0">
+            <li *ngFor="let challenge of challenges" class="list-group-item challenge-record p-0">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="flex-fill text-center">
+                        <h2>{{challenge.from.username}}</h2>
+                    </div>
+                    <div>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button mdbBtn
+                                    type="button"
+                                    class="waves-light btn-ctrl"
+                                    mdbWavesEffect
+                                    (click)="acceptChallenge(challenge)">
+                                <fa-icon [icon]="faCheck" class="text-success darken-4" size="2x"></fa-icon>
+                            </button>
+                            <button mdbBtn
+                                    type="button"
+                                    class="waves-light btn-ctrl"
+                                    mdbWavesEffect
+                                    (click)="declineChallenge(challenge)">
+                                <fa-icon [icon]="faTimes" class="text-danger darken-4" size="2x"></fa-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </mdb-card-body>
+</mdb-card>
