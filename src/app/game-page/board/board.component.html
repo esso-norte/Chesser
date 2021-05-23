@@ -1,0 +1,60 @@
+<table class="table table-borderless">
+    <tbody *ngIf="board !== null">
+    <tr *ngFor="let rank of color === 'black' ? [7, 6, 5, 4, 3, 2, 1, 0] : [0, 1, 2, 3, 4, 5, 6, 7]">
+        <th scope="row" class="align-middle col-rank text-right text-white">{{8 - rank}}</th>
+        <td *ngFor="let file of color === 'black' ? [7, 6, 5, 4, 3, 2, 1, 0] : [0, 1, 2, 3, 4, 5, 6, 7]"
+            class="square {{(rank + file) % 2 == 1 ? 'square-dark' : 'square-light'}} align-middle"
+            (click)="click($event, rank, file)">
+
+            <div *ngIf="fromRank === rank && fromFile === file" class="square-selected align-middle">
+                <fa-icon *ngIf="charToIcon(board[rank][file])"
+                         [icon]="charToIcon(board[rank][file])"
+                         class="{{isWhite(rank, file) ? 'text-white' : 'text-dark'}} piece"
+                         size="4x"></fa-icon>
+            </div>
+            <fa-icon *ngIf="charToIcon(board[rank][file]) && (fromRank !== rank || fromFile !== file)"
+                     [icon]="charToIcon(board[rank][file])"
+                     class="{{isWhite(rank, file) ? 'text-white' : 'text-dark'}} piece"
+                     size="4x"></fa-icon>
+
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th scope="col" class="col-file text-white"></th>
+        <th *ngFor="let file of color === 'black' ?
+                                        ['h', 'g', 'f', 'e', 'd', 'c', 'b', 'a'] :
+                                        ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']"
+            scope="col" class="col-file text-white">{{file}}</th>
+    </tr>
+    </tfoot>
+</table>
+
+<!-- Modal Promotion -->
+<div
+    class="modal fade"
+    id="modalPromotion"
+    tabindex="-1"
+    aria-hidden="true"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-footer justify-content-center  bg-color-danger">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button *ngFor="let piece of ['N', 'B', 'R', 'Q']" mdbBtn
+                            type="button"
+                            color="white"
+                            class="waves-light"
+                            mdbWavesEffect
+                            (click)="promoteTo(piece)"
+                    >
+                        <fa-icon [icon]="charToIcon(piece)"
+                                 size="2x"
+                                 class="{{color === 'white' ? 'text-white' : 'text-dark'}} piece"></fa-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

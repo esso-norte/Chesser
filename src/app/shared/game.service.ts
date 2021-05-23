@@ -20,8 +20,8 @@ export class GameService {
     //     return this.http.post('http://localhost:8080/api/posts/', postPayload);
     // }
 
-    getGame(id: number): Observable<GameModel> {
-        return this.http.get<GameModel>('http://localhost:8080/api/game/' + id);
+    getGame(gameId: number): Observable<GameModel> {
+        return this.http.get<GameModel>('http://localhost:8080/api/game/' + gameId);
     }
 
     makeMove(gameId: number, fromNotation: string, toNotation: string, promotion: string = null): Observable<MakeMoveResponse> {
@@ -40,31 +40,31 @@ export class GameService {
         return this.http.post<MakeMoveResponse>('http://localhost:8080/api/game/move', body);
     }
 
-    offerDraw(game: GameModel): Observable<DrawOfferModel> {
+    offerDraw(gameId: number): Observable<DrawOfferModel> {
         return this.http.post<DrawOfferModel>('http://localhost:8080/api/game/offer-draw', {
-            id: game.id
+            id: gameId
         });
     }
 
-    declineDraw(game: GameModel): Observable<DrawOfferModel> {
+    declineDraw(gameId: number): Observable<DrawOfferModel> {
         return this.http.post<DrawOfferModel>('http://localhost:8080/api/game/decline-draw', {
-            id: game.id
+            id: gameId
         });
     }
 
-    getDrawOffer(game: GameModel): Observable<DrawOfferModel> {
-        return this.http.get<DrawOfferModel>('http://localhost:8080/api/game/' + game.id + '/draw-offer');
+    getDrawOffer(gameId: number): Observable<DrawOfferModel> {
+        return this.http.get<DrawOfferModel>('http://localhost:8080/api/game/' + gameId + '/draw-offer');
     }
 
-    resign(game: GameModel): Observable<any> {
+    resign(gameId: number): Observable<any> {
         return this.http.post('http://localhost:8080/api/game/resign', {
-            id: game.id
+            id: gameId
         });
     }
 
-    analyze(game: GameModel): Observable<any> {
+    analyze(gameId: number): Observable<any> {
         return this.http.post('http://localhost:8080/api/game/analyze', {
-            id: game.id
+            id: gameId
         })
     }
 

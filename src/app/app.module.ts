@@ -15,7 +15,7 @@ import { TokenInterceptor } from './token-interceptor';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ChartModule } from 'angular2-chartjs';
 
-import { GameComponent } from './game/view-game/game.component';
+import { GamePageComponent } from './game-page/game-page.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
@@ -25,6 +25,8 @@ import { RatingHistoryComponent } from './profile-page/rating-history/rating-his
 import { StatsComponent } from './profile-page/stats/stats.component';
 import { GamesListComponent } from './profile-page/games-list/games-list.component';
 import { ChallengesListComponent } from './profile-page/challenges-list/challenges-list.component';
+import { BoardComponent } from './game-page/board/board.component';
+import { ControlPanelComponent } from './game-page/control-panel/control-panel.component';
 
 @NgModule({
     declarations: [
@@ -34,13 +36,16 @@ import { ChallengesListComponent } from './profile-page/challenges-list/challeng
         SignupComponent,
         LoginComponent,
         UserProfileComponent,
-        GameComponent,
+        GamePageComponent,
         UserListComponent,
         ProfilePageComponent,
         RatingHistoryComponent,
         StatsComponent,
         GamesListComponent,
         ChallengesListComponent,
+        BoardComponent,
+        BoardComponent,
+        ControlPanelComponent,
     ],
     imports: [
         AppRoutingModule,

@@ -1,0 +1,69 @@
+<mdb-card class="control-panel grey darken-2 text-white rounded-0">
+    <mdb-card-header class="rounded-0">
+        <h4>
+            {{getHeaderLabel()}}
+        </h4>
+    </mdb-card-header>
+    <mdb-card-body class="text-white p-0 d-flex flex-column justify-content-between">
+        <div class="moves overflow-auto d-flex flex-column">
+            <div *ngFor="let move of moves; index as moveNo" class="btn-group pb-0 d-flex" role="group" aria-label="Moves">
+                <button mdbBtn color="white" class="btn-sm btn-move rounded-0" disabled>{{moveNo + 1}}.</button>
+                <button mdbBtn *ngIf="move.length > 0" color="white" class="btn-sm btn-move rounded-0 flex-fill">{{move[0]}}</button>
+                <button *ngIf="move.length === 0" mdbBtn color="dark" class="btn-sm btn-move rounded-0 flex-fill" disabled></button>
+                <button *ngIf="move.length > 1" mdbBtn color="white" class="btn-sm btn-move rounded-0 flex-fill">{{move[1]}}</button>
+                <button *ngIf="move.length <= 1" mdbBtn color="dark" class="btn-sm btn-move rounded-0 flex-fill" disabled></button>
+            </div>
+        </div>
+        <div class="draw-panel">
+            <div *ngIf="isPlayer() && !game.finished && !drawOfferByCurrentPlayer && !drawOffer.empty" class="text-white row m-0">
+                <div class="col-6">
+                    <span>{{getOpponent().username}} offered draw</span>
+                </div>
+                <div class="col-6 p-0">
+                    <div class="btn-group d-flex" role="group">
+                        <button mdbBtn
+                                type="button"
+                                color="green"
+                                class="waves-light btn-control text-center"
+                                mdbWavesEffect
+                                (click)="offerDraw()"
+                                [disabled] = "drawOfferByCurrentPlayer"
+                        >
+                            <fa-icon [icon]="faCheck"></fa-icon>
+                        </button>
+                        <button mdbBtn
+                                type="button"
+                                color="danger"
+                                class="waves-light btn-control"
+                                mdbWavesEffect
+                                (click)="declineDraw()"
+                        >
+                            <fa-icon [icon]="faTimes"></fa-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mdb-card-body>
+    <mdb-card-footer class="p-0">
+        <div *ngIf="isPlayer() && !game.finished" class="d-flex">
+            <div class="btn-group flex-fill" role="group">
+                <button mdbBtn
+                        type="button"
+                        color="yellow"
+                        class="waves-light btn-control"
+                        mdbWavesEffect
+                        (click)="offerDraw()"
+                        [disabled] = "drawOfferByCurrentPlayer || !drawOffer.empty"
+                ><fa-icon [icon]="faHandshake" class="text-white" size="2x"></fa-icon></button>
+                <button mdbBtn
+                        type="button"
+                        color="danger"
+                        class="waves-light btn-control"
+                        mdbWavesEffect
+                        (click)="resign()"
+                ><fa-icon [icon]="faFlag" class="text-white" size="2x"></fa-icon></button>
+            </div>
+        </div>
+    </mdb-card-footer>
+</mdb-card>

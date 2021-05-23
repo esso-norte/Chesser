@@ -1,0 +1,24 @@
+<div class="game-section ml-md-0 mr-md-0">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-12">
+            <mdb-card class="text-center">
+                <mdb-card-header class="align-items-center {{isBlack() ? 'bg-white text-dark' : 'bg-dark text-white'}}">
+                    <h3>{{isBlack() ? game.whitePlayer.username : game.blackPlayer.username}}</h3>
+                </mdb-card-header>
+                <mdb-card-body class="grey darken-3 p-0 align-items-center">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8">
+                            <board [game]="game" [color]="color"></board>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <control-panel [game]="game" [color]="color" [username]="username"></control-panel>
+                        </div>
+                    </div>
+                </mdb-card-body>
+                <mdb-card-footer class="align-items-center {{!isBlack() ? 'bg-white text-dark' : 'bg-dark text-white'}}">
+                    <h3>{{!isBlack() ? game.whitePlayer.username : game.blackPlayer.username}}</h3>
+                </mdb-card-footer>
+            </mdb-card>
+        </div>
+    </div>
+</div>
