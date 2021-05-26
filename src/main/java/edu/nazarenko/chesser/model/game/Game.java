@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -27,8 +29,11 @@ public class Game {
     private User whitePlayer;
     @ManyToOne(fetch = FetchType.EAGER)
     private User blackPlayer;
+    @Column(columnDefinition="TEXT")
     private String pgn;
     private String fen;
+    @Column(columnDefinition="TEXT")
+    private String fenFullJson;
     private Instant created;
     private boolean finished;
     @Enumerated(EnumType.STRING)

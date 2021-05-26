@@ -14,6 +14,7 @@ public class GameMapper {
             .blackPlayer(game.getBlackPlayer())
             .pgn(game.getPgn())
             .fen(game.getFen())
+            .fenFullJson(game.getFenFullJson())
             .created(game.getCreated())
             .isFinished(game.isFinished())
             .result(game.getResult() != null ? game.getResult().toString() : "")
@@ -27,6 +28,7 @@ public class GameMapper {
             .blackPlayer(gameDto.getBlackPlayer())
             .pgn(gameDto.getPgn())
             .fen(gameDto.getFen())
+            .fenFullJson(gameDto.getFenFullJson())
             .created(gameDto.getCreated())
             .analyzed(gameDto.isAnalyzed())
             .build();

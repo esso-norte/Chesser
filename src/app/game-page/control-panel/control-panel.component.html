@@ -8,9 +8,9 @@
         <div class="moves overflow-auto d-flex flex-column">
             <div *ngFor="let move of moves; index as moveNo" class="btn-group pb-0 d-flex" role="group" aria-label="Moves">
                 <button mdbBtn color="white" class="btn-sm btn-move rounded-0" disabled>{{moveNo + 1}}.</button>
-                <button mdbBtn *ngIf="move.length > 0" color="white" class="btn-sm btn-move rounded-0 flex-fill">{{move[0]}}</button>
+                <button *ngIf="move.length > 0" mdbBtn color="white" class="btn-sm btn-move rounded-0 flex-fill" (click)="showMove(moveNo, 0)">{{move[0]}}</button>
                 <button *ngIf="move.length === 0" mdbBtn color="dark" class="btn-sm btn-move rounded-0 flex-fill" disabled></button>
-                <button *ngIf="move.length > 1" mdbBtn color="white" class="btn-sm btn-move rounded-0 flex-fill">{{move[1]}}</button>
+                <button *ngIf="move.length > 1" mdbBtn color="white" class="btn-sm btn-move rounded-0 flex-fill" (click)="showMove(moveNo, 1)">{{move[1]}}</button>
                 <button *ngIf="move.length <= 1" mdbBtn color="dark" class="btn-sm btn-move rounded-0 flex-fill" disabled></button>
             </div>
         </div>

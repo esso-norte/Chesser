@@ -110,6 +110,7 @@ public class ChallengeService {
             .blackPlayer(blackPlayer)
             .pgn(pgnService.generatePgn(created, whitePlayer.getUsername(), blackPlayer.getUsername()))
             .fen(fenService.startingPosition())
+            .fenFullJson(fenService.createFenJson())
             .created(created)
             .finished(false)
             .build();

@@ -4,6 +4,7 @@ import {GameModel} from "../../shared/models/game-model";
 import {GameService} from "../../shared/game.service";
 import {DrawOfferModel} from "../../shared/models/draw-offer-model";
 import {UserModel} from "../../shared/models/user-model";
+import {GamePageComponent} from "../game-page.component";
 
 @Component({
   selector: 'control-panel',
@@ -22,11 +23,12 @@ export class ControlPanelComponent implements OnInit {
     @Input() game: GameModel;
     @Input() color: 'white' | 'black' | 'viewer';
     moves: string[][] = [];
+    positionsFen: string[][] = [];
     drawOfferByCurrentPlayer = false;
     drawOffer: DrawOfferModel;
     interval: number;
 
-    constructor(private gameService: GameService) { }
+    constructor(private gamePage: GamePageComponent, private gameService: GameService) { }
 
     ngOnInit(): void {
         this.loadData();
@@ -37,7 +39,16 @@ export class ControlPanelComponent implements OnInit {
     }
 
     loadData(): void {
-        console.log(this.game.fen.split(" ")[1] === this.color[0]);
+        this.loadMoves();
+        this.loadPositions();
+
+        this.gameService.getDrawOffer(this.game.id).subscribe((data) => {
+            this.drawOffer = data;
+            this.drawOfferByCurrentPlayer = !this.drawOffer.empty && this.drawOffer.player.username == this.username;
+        });
+    }
+
+    loadMoves(): void {
         let pgn = this.game.pgn.substr(this.game.pgn.lastIndexOf("]") + 3);
         let resultIndex = Math.max(pgn.lastIndexOf("1-0"), pgn.lastIndexOf("0-1"), pgn.lastIndexOf("1/2-1/2"));
         pgn = pgn.substring(0, resultIndex === -1 ? pgn.length : resultIndex - 1);
@@ -55,11 +66,24 @@ export class ControlPanelComponent implements OnInit {
                 this.moves[moveNo] = [];
             }
         }
+    }
 
-        this.gameService.getDrawOffer(this.game.id).subscribe((data) => {
-            this.drawOffer = data;
-            this.drawOfferByCurrentPlayer = !this.drawOffer.empty && this.drawOffer.player.username == this.username;
-        });
+    loadPositions(): void {
+        let fenArray = JSON.parse(this.game.fenFullJson);
+        for (let i = 1; i < fenArray.length; i++) {
+            if (i % 2 == 1) {
+                this.positionsFen[Math.floor((i - 1) / 2)] = [];
+                this.positionsFen[Math.floor((i - 1) / 2)][0] = fenArray[i];
+            } else {
+                this.positionsFen[Math.floor((i - 1) / 2)][1] = fenArray[i];
+            }
+        }
+    }
+
+    showMove(moveNo: number, halfMoveNo: number): void {
+        this.gamePage.positionFen = this.positionsFen[moveNo][halfMoveNo];
+        this.gamePage.showLatestPosition = moveNo === this.positionsFen.length - 1 &&
+            halfMoveNo === this.positionsFen[moveNo].length - 1;
     }
 
     isPlayer(): boolean {

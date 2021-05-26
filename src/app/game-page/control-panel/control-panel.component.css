@@ -22,5 +22,7 @@
 
 .btn-move {
     width: 90px;
+    height: 31px;
+    max-height: 31px;
     text-transform: unset !important;
 }

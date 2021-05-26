@@ -106,6 +106,7 @@ public class GameService {
             if (isValid) {
                 makeMove(move);
                 game.setFen(board.getFenDto().toString());
+                game.setFenFullJson(fenService.addFenToJson(game.getFenFullJson(), game.getFen()));
                 game.setPgn(board.getPgn());
 
                 if (board.isMate(color.opposite())) {

@@ -8,6 +8,7 @@ export class GameModel {
 
     pgn: string;
     fen: string;
+    fenFullJson: string;
     finished: boolean;
     result: string;
 }

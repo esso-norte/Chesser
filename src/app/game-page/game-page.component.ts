@@ -20,12 +20,16 @@ export class GamePageComponent implements OnInit {
     color: 'white' | 'black' | 'viewer';
     interval: number;
 
+    showLatestPosition: boolean;
+    positionFen: string;
+
     constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private gameService: GameService) {
         this.gameId = +this.activatedRoute.snapshot.params.gameId;
     }
 
     ngOnInit(): void {
         this.username = this.authService.getUserName();
+        this.showLatestPosition = true;
 
         this.loadData();
 
@@ -43,6 +47,10 @@ export class GamePageComponent implements OnInit {
     loadData(): void {
         this.gameService.getGame(this.gameId).subscribe(data => {
             this.game = data;
+
+            if (this.showLatestPosition) {
+                this.positionFen = this.game.fen;
+            }
 
             if (this.username === this.game.whitePlayer.username) {
                 this.color = 'white';

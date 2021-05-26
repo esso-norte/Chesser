@@ -20,6 +20,7 @@ public class GameDto {
     private User blackPlayer;
     private String pgn;
     private String fen;
+    private String fenFullJson;
     private boolean isFinished;
     private String result;
     Instant created;
@@ -31,6 +32,7 @@ public class GameDto {
         this.blackPlayer = game.getBlackPlayer();
         this.pgn = game.getPgn();
         this.fen = game.getFen();
+        this.fenFullJson = game.getFenFullJson();
         this.isFinished = game.isFinished();
         this.result = game.getResult() == null ? "" : game.getResult().toString();
         this.created = game.getCreated();

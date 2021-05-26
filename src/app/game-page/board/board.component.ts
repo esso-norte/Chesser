@@ -18,6 +18,7 @@ import {GameService} from "../../shared/game.service";
 export class BoardComponent implements OnInit, OnChanges {
 
     @Input() game: GameModel;
+    @Input() positionFen: string;
     @Input() color: 'white' | 'black' | 'viewer';
     board: string[][] = null;
 
@@ -31,7 +32,7 @@ export class BoardComponent implements OnInit, OnChanges {
     constructor(private gameService: GameService) {}
 
     ngOnInit(): void {
-        this.loadData();
+        this.refresh();
 
         this.modalPromotion = new mdb.Modal(document.getElementById('modalPromotion'), {
             backdrop: true,
@@ -41,25 +42,25 @@ export class BoardComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
-        this.loadData();
+        this.refresh();
     }
 
-    loadData(): void {
+    refresh(): void {
 
         if (this.game.finished) {
             this.fromRank = null;
             this.fromFile = null;
         }
 
-        this.loadBoard();
+        this.setBoard();
     }
 
-    loadBoard(): void {
+    setBoard(): void {
         let rank = 0;
         let file = 0;
         this.board = [];
         this.board[0] = [];
-        const fenBoard = this.game.fen.split(" ")[0];
+        const fenBoard = this.positionFen.split(" ")[0];
 
         for (let i = 0; i < fenBoard.length; i++) {
             const character = fenBoard.charAt(i);
@@ -153,7 +154,7 @@ export class BoardComponent implements OnInit, OnChanges {
                 this.gameService.makeMove(this.game.id, fromNotation, toNotation)
                     .subscribe(
                         () => {
-                            this.loadData();
+                            this.refresh();
                         },
                         () => {
                             this.fromRank = null;
@@ -171,7 +172,7 @@ export class BoardComponent implements OnInit, OnChanges {
         this.gameService.makeMove(this.game.id, fromNotation, toNotation, piece)
             .subscribe(
                 () => {
-                    this.loadData();
+                    this.refresh();
                 },
                 () => {
                     this.fromRank = null;

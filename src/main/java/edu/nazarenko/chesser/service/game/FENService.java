@@ -1,6 +1,7 @@
 package edu.nazarenko.chesser.service.game;
 
 import edu.nazarenko.chesser.service.game.Square;
+import org.json.JSONArray;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -38,5 +39,15 @@ public class FENService {
         }
 
         return fenBoard;
+    }
+
+    public String createFenJson() {
+        return "[\"" + startingPosition() + "\"]";
+    }
+
+    public String addFenToJson(String fenJson, String fen) {
+        JSONArray fenArray = new JSONArray(fenJson);
+        fenArray.put(fen);
+        return fenArray.toString();
     }
 }
