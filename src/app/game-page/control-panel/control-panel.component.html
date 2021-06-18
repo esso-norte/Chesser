@@ -14,8 +14,7 @@
                 <button *ngIf="move.length <= 1" mdbBtn color="dark" class="btn-sm btn-move rounded-0 flex-fill" disabled></button>
             </div>
         </div>
-        <div class="draw-panel">
-            <div *ngIf="isPlayer() && !game.finished && !drawOfferByCurrentPlayer && !drawOffer.empty" class="text-white row m-0">
+        <div *ngIf="isPlayer() && !game.finished && !drawOfferByCurrentPlayer && !drawOffer.empty" class="draw-panel text-white row m-0">
                 <div class="col-6">
                     <span>{{getOpponent().username}} offered draw</span>
                 </div>
@@ -42,7 +41,15 @@
                         </button>
                     </div>
                 </div>
-            </div>
+        </div>
+        <div *ngIf="game.finished && !game.analyzed" class="analysis-panel d-flex p-0">
+            <button mdbBtn
+                    mdbWavesEffect
+                    type="button"
+                    class="btn-analyse flex-fill m-0 yellow darken-4 text-dark"
+                    (click)="analyse()">
+                <h3>ANALYSE</h3>
+            </button>
         </div>
     </mdb-card-body>
     <mdb-card-footer class="p-0">
@@ -54,15 +61,17 @@
                         class="waves-light btn-control"
                         mdbWavesEffect
                         (click)="offerDraw()"
-                        [disabled] = "drawOfferByCurrentPlayer || !drawOffer.empty"
-                ><fa-icon [icon]="faHandshake" class="text-white" size="2x"></fa-icon></button>
+                        [disabled] = "drawOfferByCurrentPlayer || !drawOffer.empty">
+                    <fa-icon [icon]="faHandshake" class="text-white" size="2x"></fa-icon>
+                </button>
                 <button mdbBtn
                         type="button"
                         color="danger"
                         class="waves-light btn-control"
                         mdbWavesEffect
-                        (click)="resign()"
-                ><fa-icon [icon]="faFlag" class="text-white" size="2x"></fa-icon></button>
+                        (click)="resign()">
+                    <fa-icon [icon]="faFlag" class="text-white" size="2x"></fa-icon>
+                </button>
             </div>
         </div>
     </mdb-card-footer>

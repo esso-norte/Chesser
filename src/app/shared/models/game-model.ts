@@ -11,4 +11,5 @@ export class GameModel {
     fenFullJson: string;
     finished: boolean;
     result: string;
+    analyzed: boolean;
 }

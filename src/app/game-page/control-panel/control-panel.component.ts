@@ -119,6 +119,12 @@ export class ControlPanelComponent implements OnInit {
         });
     }
 
+    analyse(): void {
+        this.gameService.analyze(this.game.id).subscribe((data) => {
+            console.log(data);
+        });
+    }
+
     isPlayerMove(): boolean {
         return this.isPlayer() && (this.game.fen.split(" ")[1] === this.color[0]);
     }
