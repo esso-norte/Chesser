@@ -7,7 +7,11 @@ Implemented user auth, chess gameplay, draw offerings and resigns, rating system
 Analysis is not implemented yet.
 
 Screenshots:
+
 https://ibb.co/vqz050q
+
 https://ibb.co/xDVx8zz
+
 https://ibb.co/x3mJyP6
+
 https://ibb.co/h9vhRWp
