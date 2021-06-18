@@ -1,5 +1,9 @@
 Simple web app for playing chess.
+
+Spring + Vue.
+
 Implemented user auth, chess gameplay, draw offerings and resigns, rating system and challenging other users.
+
 Analysis is not implemented yet.
 
 Screenshots:
